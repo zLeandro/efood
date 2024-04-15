@@ -18,7 +18,6 @@ export const HeaderBar = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top 64px;
   }
 
   p {

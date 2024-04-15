@@ -1,6 +1,7 @@
 import Restaurant from '../../models/Restaurant'
 import Product from '../Product'
-import { Container, List } from './styles'
+import { Container } from '../Product/styles'
+import { List } from './styles'
 
 export type Props = {
   restaurant: Restaurant[]

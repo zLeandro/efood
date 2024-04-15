@@ -1,7 +1,15 @@
 import Tag from '../Tag'
 import estrela from '../../assets/images/estrela.svg'
 
-import { Card, Descricao, Titulo, Classificacao, Infos, Botao } from './styles'
+import {
+  Card,
+  Descricao,
+  Titulo,
+  Classificacao,
+  Infos,
+  Botao,
+  Container
+} from './styles'
 
 type Props = {
   title: string
@@ -32,6 +40,12 @@ const Product = ({
     <Descricao>{description}</Descricao>
     <Botao to="/cardapio">Saiba mais</Botao>
   </Card>
+)
+
+const Teste = () => (
+  <>
+    <Container></Container>
+  </>
 )
 
 export default Product

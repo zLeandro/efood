@@ -8,7 +8,9 @@ import {
   Classificacao,
   Infos,
   Botao,
-  Container
+  Container,
+  ImagemWrapper,
+  Imagem
 } from './styles'
 
 type Props = {
@@ -27,7 +29,9 @@ const Product = ({
   image
 }: Props) => (
   <Card>
-    <img src={image} alt={title} />
+    <ImagemWrapper>
+      <Imagem src={image} alt={title} />
+    </ImagemWrapper>
     <Infos>
       {infos.map((info) => (
         <Tag key={info}>{info}</Tag>

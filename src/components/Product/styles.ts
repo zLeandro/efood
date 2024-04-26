@@ -10,6 +10,17 @@ export const Card = styled.div`
   margin-bottom: 20px;
 `
 
+export const ImagemWrapper = styled.div`
+  max-width: 472px;
+  width: 100%;
+`
+
+export const Imagem = styled.img`
+  width: 100%;
+  height: 100%;
+  max-height: 217px;
+`
+
 export const Botao = styled(Link)`
   background-color: ${cores.vermelho};
   color: ${cores.amareloClaro};
@@ -36,10 +47,6 @@ export const Classificacao = styled.h4`
   font-weight: bold;
   font-size: 18px;
   text-align: right;
-`
-
-export const EstrelaImg = styled.img`
-  float: right;
 `
 
 export const Descricao = styled.p`

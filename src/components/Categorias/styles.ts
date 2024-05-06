@@ -9,6 +9,12 @@ export const Card = styled.div`
   position: relative;
 `
 
+export const Imagem = styled.img`
+  width: 100%;
+  height: 100%;
+  max-height: 167px;
+`
+
 export const Botao = styled(Link)`
   background-color: ${cores.amarelo};
   color: ${cores.vermelho};

@@ -1,12 +1,9 @@
-import imagem2 from '../../assets/images/imagem2.png'
-import imagem from '../../assets/images/imagem.png'
+import { useEffect, useState } from 'react'
 import Header2 from '../../components/Header2'
 import Banner from '../../components/Banner'
 import CardapioList from '../../components/CardapioList'
-import Pizza from '../../assets/images/pizza.png'
-import { useEffect, useState } from 'react'
 
-export type Comidas = {
+export type Food = {
   id: number
   titulo: string
   destacado?: string
@@ -21,11 +18,11 @@ export type Comidas = {
     nome: string
     descricao: string
     porcao: string
-  }
+  }[]
 }
 
-const Home = () => {
-  const [comidas, setComidas] = useState<Comidas[]>([])
+const Cardapio = () => {
+  const [comidas, setComidas] = useState<Food[]>([])
 
   useEffect(() => {
     fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
@@ -42,4 +39,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default Cardapio

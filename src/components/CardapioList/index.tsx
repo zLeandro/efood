@@ -1,10 +1,11 @@
-import { Food } from '../../pages/Cardapio'
+import React from 'react'
 import Categorias from '../Categorias'
 import { Container } from '../Product/styles'
 import { List } from './styles'
+import { MenuItem } from '../../pages/Cardapio'
 
-export type Props = {
-  comidas: Food[]
+type Props = {
+  comidas?: MenuItem[]
 }
 
 const CardapioList = ({ comidas }: Props) => {
@@ -12,19 +13,18 @@ const CardapioList = ({ comidas }: Props) => {
     <Container>
       <div className="container">
         <List>
-          {comidas.map((restaurante) =>
-            restaurante.cardapio.map((item) => (
+          {comidas &&
+            comidas.length > 0 &&
+            comidas.map((item) => (
               <Categorias
                 key={item.id}
                 description={item.descricao}
                 image={item.foto}
                 title={item.nome}
-                onClick={function (): void {
-                  throw new Error('Function not implemented.')
-                }}
+                servings={item.porcao}
+                price={item.preco}
               />
-            ))
-          )}
+            ))}
         </List>
       </div>
     </Container>

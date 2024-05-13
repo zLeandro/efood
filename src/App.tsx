@@ -10,7 +10,7 @@ const rotas = createBrowserRouter([
     element: <Home />
   },
   {
-    path: '/cardapio',
+    path: '/cardapio/:id',
     element: <Cardapio />
   }
 ])

@@ -21,7 +21,7 @@ export const Imagem = styled.img`
   max-height: 217px;
 `
 
-export const Botao = styled(Link)`
+export const Botao = styled.button`
   background-color: ${cores.vermelho};
   color: ${cores.amareloClaro};
   font-weight: bold;

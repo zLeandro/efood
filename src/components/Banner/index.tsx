@@ -1,28 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import { Imagem, Titulo, Subtitulo } from './styles'
 import { Container } from '../Product/styles'
-import { Food } from '../../pages/Cardapio'
+import { Restaurant } from '../../pages/Home'
 
-const Banner = () => {
-  const [comida, setComida] = useState<Food | null>(null)
+interface Props {
+  restauranteId: string
+}
+
+const Banner: React.FC<Props> = ({ restauranteId }) => {
+  const [restaurante, setRestaurante] = useState<Restaurant | null>(null)
 
   useEffect(() => {
-    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+    if (!restauranteId) return
+
+    fetch(
+      `https://fake-api-tau.vercel.app/api/efood/restaurantes/${restauranteId}`
+    )
       .then((res) => res.json())
       .then((data) => {
-        if (Array.isArray(data) && data.length > 0) {
-          setComida(data[0])
-        }
+        setRestaurante(data)
       })
-  }, [])
+      .catch((error) => {
+        console.error('Erro ao obter os detalhes do restaurante:', error)
+      })
+  }, [restauranteId])
 
   return (
-    <Imagem style={{ backgroundImage: `url(${comida?.capa})` }}>
+    <Imagem style={{ backgroundImage: `url(${restaurante?.capa})` }}>
       <Container>
-        {comida && (
+        {restaurante && (
           <>
-            <Titulo>{comida.tipo}</Titulo>
-            <Subtitulo>{comida.titulo}</Subtitulo>
+            <Titulo>{restaurante.tipo}</Titulo>
+            <Subtitulo>{restaurante.titulo}</Subtitulo>
           </>
         )}
       </Container>

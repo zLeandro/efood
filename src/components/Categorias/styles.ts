@@ -72,7 +72,8 @@ export const ModalContent = styled.div`
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   max-width: 1024px;
-  width: 90%;
+  width: 100%;
+  height: 344px;
 `
 
 export const CloseButton = styled.span`
@@ -85,10 +86,10 @@ export const CloseButton = styled.span`
 `
 
 export const ImagemModal = styled.img`
-  width: auto;
-  height: auto;
-  max-width: 280px;
-  max-height: 280px;
+  width: 280px;
+  height: 280px;
+  margin-top: 10px;
+  margin-left: 9px;
 `
 
 export const TextoModal = styled.div`
@@ -103,19 +104,19 @@ export const TituloModal = styled.h2`
   font-weight: 900px;
   margin-bottom: 10px;
   color: ${cores.branco};
+  margin-top: 10px;
 `
 
 export const DescricaoModal = styled.p`
-  margin-top: 16px;
   color: ${cores.branco};
   font-size: 14px;
   font-weight: 400px;
+  margin-top: -100px;
 `
 
 export const Preco = styled.span`
   font-size: 16px;
   color: ${cores.amarelo};
-  margin-top: 8px;
 `
 
 export const BotaoAdicionar = styled.button`
@@ -125,9 +126,11 @@ export const BotaoAdicionar = styled.button`
   font-size: 14px;
   border: none;
   padding: 4px 16px;
-  margin-top: 8px;
+  position: relative;
+  top: -40px;
   cursor: pointer;
   text-decoration: none;
   display: flex;
   align-items: center;
+  width: 240px;
 `

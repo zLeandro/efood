@@ -59,8 +59,7 @@ const Categorias = ({ title, description, image, servings, price }: Props) => {
               <TituloModal>{title}</TituloModal>
               <DescricaoModal>{description}</DescricaoModal>
               <DescricaoModal>Serve: {servings}</DescricaoModal>
-              <DescricaoModal>Preço: {price}</DescricaoModal>
-              <BotaoAdicionar>Adicionar ao carrinho</BotaoAdicionar>
+              <BotaoAdicionar>Adicionar ao carrinho - R${price}</BotaoAdicionar>
             </TextoModal>
           </ModalContent>
         </ModalWrapper>

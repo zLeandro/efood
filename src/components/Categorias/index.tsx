@@ -12,19 +12,17 @@ import {
   TextoModal,
   TituloModal,
   DescricaoModal,
-  Preco,
   BotaoAdicionar
 } from './styles'
+import { useDispatch } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
+import { MenuItem } from '../../pages/Cardapio'
 
 type Props = {
-  title: string
-  description: string
-  image: string
-  servings: string
-  price: number
+  item: MenuItem
 }
 
-const Categorias = ({ title, description, image, servings, price }: Props) => {
+const Categorias = ({ item }: Props) => {
   const [modalOpen, setModalOpen] = useState(false)
 
   const getDescricao = (descricao: string) => {
@@ -42,24 +40,34 @@ const Categorias = ({ title, description, image, servings, price }: Props) => {
     setModalOpen(false)
   }
 
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(item))
+    closeModal()
+    dispatch(open())
+  }
+
   return (
     <>
       <Card>
-        <Imagem src={image} alt={title} />
-        <Titulo>{title}</Titulo>
-        <Descricao>{getDescricao(description)}</Descricao>
+        <Imagem src={item.foto} alt={item.nome} />
+        <Titulo>{item.nome}</Titulo>
+        <Descricao>{getDescricao(item.descricao)}</Descricao>
         <Botao onClick={openModal}>Mais detalhes</Botao>
       </Card>
       {modalOpen && (
         <ModalWrapper>
           <ModalContent>
-            <ImagemModal src={image} alt={title} />
+            <ImagemModal src={item.foto} alt={item.nome} />
             <TextoModal>
               <CloseButton onClick={closeModal}>&times;</CloseButton>
-              <TituloModal>{title}</TituloModal>
-              <DescricaoModal>{description}</DescricaoModal>
-              <DescricaoModal>Serve: {servings}</DescricaoModal>
-              <BotaoAdicionar>Adicionar ao carrinho - R${price}</BotaoAdicionar>
+              <TituloModal>{item.nome}</TituloModal>
+              <DescricaoModal>{item.descricao}</DescricaoModal>
+              <DescricaoModal>Serve: {item.porcao}</DescricaoModal>
+              <BotaoAdicionar onClick={addToCart}>
+                Adicionar ao carrinho - R${item.preco}
+              </BotaoAdicionar>
             </TextoModal>
           </ModalContent>
         </ModalWrapper>

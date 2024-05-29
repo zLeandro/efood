@@ -15,16 +15,7 @@ const CardapioList = ({ comidas }: Props) => {
         <List>
           {comidas &&
             comidas.length > 0 &&
-            comidas.map((item) => (
-              <Categorias
-                key={item.id}
-                description={item.descricao}
-                image={item.foto}
-                title={item.nome}
-                servings={item.porcao}
-                price={item.preco}
-              />
-            ))}
+            comidas.map((item) => <Categorias key={item.id} item={item} />)}
         </List>
       </div>
     </Container>

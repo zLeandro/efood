@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 import { Link } from 'react-router-dom'
+import { breakpoints } from '../Categorias/styles'
 
 export const Card = styled.div`
   background-color: ${cores.branco};
@@ -66,4 +67,8 @@ export const Container = styled.div`
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    max-width: 80%;
+  }
 `

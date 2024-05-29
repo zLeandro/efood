@@ -1,6 +1,11 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '767px'
+}
+
 export const Card = styled.div`
   background-color: ${cores.vermelho};
   margin-top: 56px;
@@ -21,11 +26,13 @@ export const Botao = styled.button`
   font-size: 14px;
   border: none;
   padding: 4px 16px;
-  margin: 8px;
+  margin: 8px 0;
   cursor: pointer;
   text-decoration: none;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: calc(100% - 16px);
 `
 
 export const Titulo = styled.h3`
@@ -49,6 +56,10 @@ export const Container = styled.div`
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    max-width: 80%;
+  }
 `
 
 export const ModalWrapper = styled.div`
@@ -74,6 +85,10 @@ export const ModalContent = styled.div`
   max-width: 1024px;
   width: 100%;
   height: 344px;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    margin: 20px;
+  }
 `
 
 export const CloseButton = styled.span`
@@ -101,7 +116,7 @@ export const TextoModal = styled.div`
 
 export const TituloModal = styled.h2`
   font-size: 18px;
-  font-weight: 900px;
+  font-weight: 900;
   margin-bottom: 10px;
   color: ${cores.branco};
   margin-top: 10px;
@@ -110,7 +125,7 @@ export const TituloModal = styled.h2`
 export const DescricaoModal = styled.p`
   color: ${cores.branco};
   font-size: 14px;
-  font-weight: 400px;
+  font-weight: 400;
   margin-top: -100px;
 `
 

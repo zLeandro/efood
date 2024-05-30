@@ -48,6 +48,13 @@ const Categorias = ({ item }: Props) => {
     dispatch(open())
   }
 
+  const formataPreco = (preco: number) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
+
   return (
     <>
       <Card>
@@ -66,7 +73,7 @@ const Categorias = ({ item }: Props) => {
               <DescricaoModal>{item.descricao}</DescricaoModal>
               <DescricaoModal>Serve: {item.porcao}</DescricaoModal>
               <BotaoAdicionar onClick={addToCart}>
-                Adicionar ao carrinho - R${item.preco}
+                Adicionar ao carrinho - {formataPreco(item.preco)}
               </BotaoAdicionar>
             </TextoModal>
           </ModalContent>

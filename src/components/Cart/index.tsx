@@ -33,6 +33,13 @@ const Cart = () => {
     dispatch(remove(id))
   }
 
+  const formataPreco = (preco: number) => {
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'currency',
+      currency: 'BRL'
+    }).format(preco)
+  }
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
@@ -43,7 +50,7 @@ const Cart = () => {
               <img src={item.foto} />
               <div>
                 <h3>{item.nome}</h3>
-                <span>R$ {item.preco}</span>
+                <span>{formataPreco(item.preco)}</span>
               </div>
               <button onClick={() => removeItem(item.id)} type="button" />
             </CartItem>
@@ -52,7 +59,7 @@ const Cart = () => {
         <PriceContainer>
           <Prices>Valor total</Prices>
           <Price2>
-            R$ {getTotalPrice()}
+            {formataPreco(getTotalPrice())}
             {''}
           </Price2>
         </PriceContainer>

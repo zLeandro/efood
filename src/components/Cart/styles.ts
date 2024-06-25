@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 import fechar from '../../assets/images/lixeira.png'
+import { breakpoints } from '../Categorias/styles'
 
 export const Botao = styled.button`
   background-color: ${cores.amarelo};
@@ -47,6 +48,11 @@ export const Sidebar = styled.aside`
   padding: 32px 8px 0 8px;
   max-width: 360px;
   width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 280px;
+    width: 100%;
+  }
 `
 
 export const PriceContainer = styled.div`

@@ -64,7 +64,6 @@ const Entrega = ({ onNext, onBack }: EntregaProps) => {
           }
         ]
       }).then(() => {
-        // Se a requisição for bem-sucedida, avance para o próximo passo
         onNext()
       })
     }

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import { Link } from 'react-router-dom'
+import { breakpoints } from '../Categorias/styles'
 
 export const Card = styled.div`
   background-color: ${cores.branco};
@@ -10,7 +10,18 @@ export const Card = styled.div`
   margin-bottom: 20px;
 `
 
-export const Botao = styled(Link)`
+export const ImagemWrapper = styled.div`
+  max-width: 472px;
+  width: 100%;
+`
+
+export const Imagem = styled.img`
+  width: 100%;
+  height: 100%;
+  max-height: 217px;
+`
+
+export const Botao = styled.button`
   background-color: ${cores.vermelho};
   color: ${cores.amareloClaro};
   font-weight: bold;
@@ -38,10 +49,6 @@ export const Classificacao = styled.h4`
   text-align: right;
 `
 
-export const EstrelaImg = styled.img`
-  float: right;
-`
-
 export const Descricao = styled.p`
   font-size: 14px;
   line-height: 22px;
@@ -59,4 +66,8 @@ export const Container = styled.div`
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    max-width: 80%;
+  }
 `

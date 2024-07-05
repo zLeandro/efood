@@ -1,62 +1,55 @@
-import imagem2 from '../../assets/images/imagem2.png'
-import imagem from '../../assets/images/imagem.png'
+import { useEffect, useState } from 'react'
 import Header2 from '../../components/Header2'
 import Banner from '../../components/Banner'
 import CardapioList from '../../components/CardapioList'
-import Comidas from '../../models/Comidas'
-import Pizza from '../../assets/images/pizza.png'
+import { useParams } from 'react-router-dom'
 
-const comidas: Comidas[] = [
-  {
-    id: 1,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: Pizza,
-    title: 'Pizza Marguerita'
-  },
-  {
-    id: 2,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: Pizza,
-    title: 'Pizza Marguerita'
-  },
-  {
-    id: 3,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: Pizza,
-    title: 'Pizza Marguerita'
-  },
-  {
-    id: 4,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: Pizza,
-    title: 'Pizza Marguerita'
-  },
-  {
-    id: 5,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: Pizza,
-    title: 'Pizza Marguerita'
-  },
-  {
-    id: 6,
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: Pizza,
-    title: 'Pizza Marguerita'
-  }
-]
+export type Restaurant = {
+  id: number
+  titulo: string
+  destacado?: string
+  tipo: string
+  avaliacao: string
+  descricao: string
+  capa: string
+}
 
-const Home = () => (
-  <>
-    <Header2 />
-    <Banner />
-    <CardapioList comidas={comidas} />
-  </>
-)
+export type MenuItem = {
+  quantidade: number
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  descricao: string
+  porcao: string
+}
 
-export default Home
+export type Food = {
+  restaurante: Restaurant
+  cardapio: MenuItem[]
+}
+
+const Cardapio = () => {
+  const { id } = useParams()
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setCardapio(res))
+      .catch((error) =>
+        console.error('Erro ao obter os dados do restaurante:', error)
+      )
+  }, [id])
+
+  const [cardapio, setCardapio] = useState<Food | null>(null)
+
+  return (
+    <>
+      <Header2 />
+      {id !== undefined && <Banner restauranteId={id} />}
+      {cardapio && <CardapioList comidas={cardapio.cardapio} />}
+    </>
+  )
+}
+
+export default Cardapio

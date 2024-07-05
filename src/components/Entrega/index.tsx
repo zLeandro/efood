@@ -17,7 +17,7 @@ type EntregaProps = {
 }
 
 const Entrega = ({ onNext, onBack }: EntregaProps) => {
-  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
+  const [purchase] = usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {

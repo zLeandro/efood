@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 
 import ProductsList from '../../components/ProductsList'
-import imagem2 from '../../assets/images/imagem2.png'
-import imagem from '../../assets/images/imagem.png'
 import Header from '../../components/Header'
 
 export type Restaurant = {

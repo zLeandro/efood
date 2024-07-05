@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import { Link } from 'react-router-dom'
 import { breakpoints } from '../Categorias/styles'
 
 export const Card = styled.div`

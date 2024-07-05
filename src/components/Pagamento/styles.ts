@@ -87,3 +87,15 @@ export const Container = styled.div`
 export const Small = styled.small`
   color: white;
 `
+
+export const Mensagem = styled.p`
+  color: ${cores.amarelo};
+  font-size: 14px;
+  font-wheight: 400;
+
+  h3 {
+    margin-bottom: 16px;
+    font-wheight: 700;
+    font-size: 16px;
+  }
+`

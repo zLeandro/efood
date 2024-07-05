@@ -1,5 +1,3 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import Tag from '../Tag'
 import estrela from '../../assets/images/estrela.svg'
 import { Link } from 'react-router-dom'
@@ -9,7 +7,6 @@ import {
   Titulo,
   Classificacao,
   Infos,
-  Container,
   ImagemWrapper,
   Imagem,
   Botao
@@ -32,12 +29,6 @@ const Product = ({
   infos,
   image
 }: Props) => {
-  const navigate = useNavigate()
-
-  const handleClick = () => {
-    navigate(`/cardapio/${id}`)
-  }
-
   return (
     <Card>
       <ImagemWrapper>
@@ -59,11 +50,5 @@ const Product = ({
     </Card>
   )
 }
-
-const Teste = () => (
-  <>
-    <Container></Container>
-  </>
-)
 
 export default Product

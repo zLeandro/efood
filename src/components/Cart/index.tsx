@@ -12,15 +12,17 @@ import {
 
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
-import { close, remove } from '../../store/reducers/cart'
+import { close, remove, clear } from '../../store/reducers/cart'
 import Entrega from '../Entrega'
 import Pagamento from '../Pagamento'
+import { Mensagem } from '../Pagamento/styles'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const dispatch = useDispatch()
   const [isEntregaOpen, setIsEntregaOpen] = useState(false)
   const [isPagamentoOpen, setIsPagamentoOpen] = useState(false)
+  const [isPaymentCompleted, setIsPaymentCompleted] = useState(false)
 
   const closeCart = () => {
     dispatch(close())
@@ -44,6 +46,10 @@ const Cart = () => {
   }
 
   const handleContinuar = () => {
+    if (items.length === 0) {
+      alert('O carrinho está vazio. Adicione itens antes de continuar.')
+      return
+    }
     setIsEntregaOpen(true)
   }
 
@@ -52,17 +58,33 @@ const Cart = () => {
   }
 
   const handlePagamento = () => {
+    if (items.length === 0) {
+      alert('O carrinho está vazio. Adicione itens antes de continuar.')
+      return
+    }
     setIsPagamentoOpen(true)
+  }
+
+  const handleFinalize = () => {
+    dispatch(clear())
+    setIsPagamentoOpen(false)
+    setIsEntregaOpen(false)
+    setIsPaymentCompleted(true)
   }
 
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
       <Sidebar>
-        {isPagamentoOpen ? (
+        {isPaymentCompleted ? (
+          <Mensagem>
+            <h3>Pedido realizado!</h3>
+            <Botao onClick={() => setIsPaymentCompleted(false)}>Fechar</Botao>
+          </Mensagem>
+        ) : isPagamentoOpen ? (
           <Pagamento
             onBack={() => setIsPagamentoOpen(false)}
-            onFinalize={() => alert('Pedido Finalizado!')}
+            onFinalize={handleFinalize}
           />
         ) : isEntregaOpen ? (
           <Entrega onNext={handlePagamento} onBack={handleVoltar} />

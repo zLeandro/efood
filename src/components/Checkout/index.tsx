@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import Entrega from '../Entrega'
 import Pagamento from '../Pagamento'
+import { useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 
 const Checkout = () => {
   const [step, setStep] = useState('entrega')
+  const { items } = useSelector((state: RootReducer) => state.cart)
 
   return (
     <div>
